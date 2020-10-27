@@ -3,13 +3,36 @@ title: "Avian Light Environment Code"
 output: html_document
 ---
 
+
+## Introduction
+
+Install the packages needed, mainly 'tidyr' for easy coding
+
 ```{r}
+install.packages("tidyr")
+library(tidyr)
+```
+
+Here we are going to import the raw light .csv data
+
+```{r}
+
+rawData <- as.data.frame(read.csv("Hylopezus_macularius_geo.csv", header=TRUE))
 
 ```
 
-
+Now to format the data organization. Because date and time are compiled together, we want them to be separate columns. We also want to cut out the lag time before deployment, so you will have to input an exact banding time.
 
 ```{r}
+sepRawData<-rawData %>%
+tidyr::separate(DD.MM.YYYY.HH.MM.SS, into = c("date", "time"), sep = " ")
+#Converting 'date' column as sequential dates, renaming light column
+sepRawData$date <- as.Date(sepRawData$date, "%d/%m/%Y")
+sepRawData %>% rename(light = light.lux.)
+
+readyData <- dplyr::filter(sepRawData, date >= "24-07-2018" & date <= "04-06-2019")
+
+readyData <- sepRawData[(sepRawData$date >= "2018-07-24") & (sepRawData$date <= "2019-06-03") ,]
 
 ```
 
