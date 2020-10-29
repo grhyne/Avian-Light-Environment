@@ -9,15 +9,18 @@ output: html_document
 Install the packages needed, mainly 'tidyr' for easy coding
 
 ```{r}
-install.packages("tidyr")
 library(tidyr)
 ```
 
-Here we are going to import the raw light .csv data
+Here we are going to import the raw light .csv data. INSERT FILE HERE
 
 ```{r}
 
-rawData <- as.data.frame(read.csv("Hylopezus_macularius_geo.csv", header=TRUE))
+rawData <- as.data.frame(read.csv("./Species_Data/HYMA_geo.csv", header=TRUE))
+
+#Insert date banded and date recaptured in "YYYY-MM-DD" format
+bandDate1 <- "2018-07-24"
+recapDate1 <- "2019-06-03"
 
 ```
 
@@ -28,20 +31,37 @@ sepRawData<-rawData %>%
 tidyr::separate(DD.MM.YYYY.HH.MM.SS, into = c("date", "time"), sep = " ")
 #Converting 'date' column as sequential dates, renaming light column
 sepRawData$date <- as.Date(sepRawData$date, "%d/%m/%Y")
-sepRawData %>% rename(light = light.lux.)
 
-readyData <- dplyr::filter(sepRawData, date >= "24-07-2018" & date <= "04-06-2019")
-
-readyData <- sepRawData[(sepRawData$date >= "2018-07-24") & (sepRawData$date <= "2019-06-03") ,]
+dateData <- sepRawData[(sepRawData$date >= bandDate1) & (sepRawData$date <= recapDate1) ,]
 
 ```
 
 
-
-
+Remove all night-time light recordings (> 1.136 lumens)
 
 ```{r}
-
+daylightData <- dplyr::filter(dateData, light.lux. > 1.136 & light.lux. < 1000)
+  
 ```
 
+Finalize our data to have daily mean, max, and min
+
+```{r}
+groupData <- daylightData %>% 
+  dplyr::group_by(date)
+finalData <- groupData %>%
+  dplyr::summarise(mean = mean(light.lux.), max = max(light.lux.),min = min(light.lux.))
+
+View(finalData)
+```
+
+Now we can plot the average light
+
+```{r}
+plot(finalData$date, finalData$mean,
+     main = "Hylopezus macularius",
+     ylab = "Daily mean light (lux)",
+     xlab = "Month",
+     type = "l")
+```
 
