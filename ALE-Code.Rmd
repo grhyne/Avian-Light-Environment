@@ -15,13 +15,20 @@ library(tidyr)
 Here we are going to import the raw light .csv data. INSERT FILE HERE
 
 ```{r}
-
+spName1 <- "Hylopezus macularius"
 rawData <- as.data.frame(read.csv("./Species_Data/HYMA_geo.csv", header=TRUE))
 
 #Insert date banded and date recaptured in "YYYY-MM-DD" format
 bandDate1 <- "2018-07-24"
 recapDate1 <- "2019-06-03"
 
+#Second species to compare
+spName2 <- "Myrmothera campanisona"
+rawData2 <- as.data.frame(read.csv("./Species_Data/MYCA_geo.csv", header = TRUE))
+
+#Band dates of second species
+bandDate2 <- "2018-8-16"
+recapDate2 <- "2019-5-31"
 ```
 
 Now to format the data organization. Because date and time are compiled together, we want them to be separate columns. We also want to cut out the lag time before deployment, so you will have to input an exact banding time.
@@ -55,13 +62,57 @@ finalData <- groupData %>%
 View(finalData)
 ```
 
-Now we can plot the average light
+Plot the average light
 
 ```{r}
 plot(finalData$date, finalData$mean,
-     main = "Hylopezus macularius",
+     main = spName1,
      ylab = "Daily mean light (lux)",
      xlab = "Month",
      type = "l")
 ```
+
+Now we will repeat this process for the second species
+```{r}
+sepRawData2<-rawData2 %>%
+tidyr::separate(DD.MM.YYYY.HH.MM.SS, into = c("date", "time"), sep = " ")
+#Converting 'date' column as sequential dates, renaming light column
+sepRawData2$date <- as.Date(sepRawData2$date, "%d/%m/%Y")
+
+dateData2 <- sepRawData2[(sepRawData2$date >= bandDate2) & (sepRawData2$date <= recapDate2) ,]
+
+daylightData2 <- dplyr::filter(dateData2, light.lux. > 1.136 & light.lux. < 1000)
+
+groupData2 <- daylightData2 %>% 
+  dplyr::group_by(date)
+
+finalData2 <- groupData2 %>%
+  dplyr::summarise(mean = mean(light.lux.), max = max(light.lux.),min = min(light.lux.))
+
+View(finalData2)
+plot(finalData2$date, finalData2$mean,
+     main = spName2,
+     ylab = "Daily mean light (lux)",
+     xlab = "Month",
+     type = "l")
+```
+
+
+Compare the two
+```{r}
+install.packages('ggplot2')
+library('ggplot2')
+
+ggplot() + 
+  geom_line(data = finalData, aes(x = date, y = mean, color = "blue")) + geom_line(data = finalData2, aes(x = date, y = mean, color = "red"))
+```
+
+Basic statistics of both species
+```{r}
+summary(finalData$mean)
+
+summary(finalData2$mean)
+
+```
+
 
