@@ -100,11 +100,10 @@ plot(finalData2$date, finalData2$mean,
 
 Compare the two
 ```{r}
-install.packages('ggplot2')
 library('ggplot2')
 
 ggplot() + 
-  geom_line(data = finalData, aes(x = date, y = mean, color = "blue")) + geom_line(data = finalData2, aes(x = date, y = mean, color = "red"))
+  geom_line(data = finalData, aes(x = date, y = mean, color = spName1)) + geom_line(data = finalData2, aes(x = date, y = mean, color = spName2)) + theme(legend.position="bottom")
 ```
 
 Basic statistics of both species
