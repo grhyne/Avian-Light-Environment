@@ -9,7 +9,8 @@ output: html_document
 Install the packages needed, mainly 'tidyr' for easy coding
 
 ```{r}
-library(tidyr)
+library('tidyr')
+library('ggplot2')
 ```
 
 Here we are going to import the raw light .csv data. INSERT FILE HERE
@@ -54,11 +55,11 @@ daylightData <- dplyr::filter(dateData, light.lux. > 1.136 & light.lux. < 1000)
 Finalize our data to have daily mean, max, and min
 
 ```{r}
-groupData <- daylightData %>% 
-  dplyr::group_by(date)
-finalData <- groupData %>%
-  dplyr::summarise(mean = mean(light.lux.), max = max(light.lux.),min = min(light.lux.))
 
+finalData <- daylightData %>% 
+  dplyr::group_by(date) %>%
+  dplyr::summarise(mean = mean(light.lux.), max = max(light.lux.),min = min(light.lux.))
+  
 View(finalData)
 ```
 
@@ -83,28 +84,31 @@ dateData2 <- sepRawData2[(sepRawData2$date >= bandDate2) & (sepRawData2$date <= 
 
 daylightData2 <- dplyr::filter(dateData2, light.lux. > 1.136 & light.lux. < 1000)
 
-groupData2 <- daylightData2 %>% 
-  dplyr::group_by(date)
-
-finalData2 <- groupData2 %>%
+finalData2 <- daylightData2 %>% 
+  dplyr::group_by(date) %>%
   dplyr::summarise(mean = mean(light.lux.), max = max(light.lux.),min = min(light.lux.))
 
 View(finalData2)
+
 plot(finalData2$date, finalData2$mean,
      main = spName2,
      ylab = "Daily mean light (lux)",
      xlab = "Month",
      type = "l")
+
 ```
 
 
 Compare the two
 ```{r}
-library('ggplot2')
 
 ggplot() + 
   geom_line(data = finalData, aes(x = date, y = mean, color = spName1)) + geom_line(data = finalData2, aes(x = date, y = mean, color = spName2)) + theme(legend.position="bottom")
+ 
 ```
+
+
+
 
 Basic statistics of both species
 ```{r}
@@ -113,5 +117,23 @@ summary(finalData$mean)
 summary(finalData2$mean)
 
 ```
+
+
+```{r}
+months1 <- finalData %>%
+  dplyr::mutate(month = format(date, "%m"))
+
+boxplot(mean~month, data = months1, main = spName1, xlab = "Month", ylab = "Avg. Light (lux)")  
+
+```
+
+```{r}
+months2 <- finalData2 %>%
+  dplyr::mutate(month = format(date, "%m"))
+
+boxplot(mean~month, data = months2, main = spName2, xlab = "Month", ylab = "Avg. Light (lux)")  
+
+```
+
 
 
