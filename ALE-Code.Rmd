@@ -28,7 +28,7 @@ spName2 <- "Myrmothera campanisona"
 rawData2 <- as.data.frame(read.csv("./Species_Data/MYCA_geo.csv", header = TRUE))
 
 #Band dates of second species
-bandDate2 <- "2018-8-16"
+bandDate2 <- "2018-8-19"
 recapDate2 <- "2019-5-31"
 ```
 
@@ -123,7 +123,7 @@ summary(finalData2$mean)
 months1 <- finalData %>%
   dplyr::mutate(month = format(date, "%m"))
 
-boxplot(mean~month, data = months1, main = spName1, xlab = "Month", ylab = "Avg. Light (lux)")  
+boxplot(mean~month, data = months1, main = spName1, xlab = "Month", ylab = "Avg. Light (lux)", outline = FALSE)  
 
 ```
 
@@ -131,7 +131,7 @@ boxplot(mean~month, data = months1, main = spName1, xlab = "Month", ylab = "Avg.
 months2 <- finalData2 %>%
   dplyr::mutate(month = format(date, "%m"))
 
-boxplot(mean~month, data = months2, main = spName2, xlab = "Month", ylab = "Avg. Light (lux)")  
+boxplot(mean~month, data = months2, main = spName2, xlab = "Month", ylab = "Avg. Light (lux)", outline = FALSE)  
 
 ```
 
