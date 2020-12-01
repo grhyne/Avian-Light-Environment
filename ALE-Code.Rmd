@@ -35,12 +35,12 @@ bandDate1 <- "2018-07-05"
 recapDate1 <- "2019-06-25"
 
 #Second species to compare
-spName2 <- "Sclerurus rufigularis"
-rawData2 <- as.data.frame(read.csv("./Species_Data/SCRU_geo.csv", header = TRUE))
+spName2 <- "Hylopezus macularius"
+rawData2 <- as.data.frame(read.csv("./Species_Data/HYMA_geo.csv", header = TRUE))
 
 #Band dates of second species
-bandDate2 <- "2018-08-07"
-recapDate2 <- "2019-06-17"
+bandDate2 <- "2018-07-24"
+recapDate2 <- "2019-06-03"
 ```
 
 Now to format the data organization. Because date and time are compiled together, we want them to be separate columns. We also want to cut out the lag time before deployment, so you will have to input an exact banding time.
@@ -154,8 +154,17 @@ summary(finalData2$mean)
 Independent T-test
 ```{r}
 
-t.test(finalData$mean, finalData2$mean)
+pVal <- t.test(finalData$mean, finalData2$mean)$p.value
 
+signif <- function(x){
+  if(x > 0.05){
+    print("No significant difference between individuals")
+  }
+  else(print(as.numeric(x)))
+  
+}
+
+signif(pVal)
 ```
 
 
