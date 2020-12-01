@@ -2,9 +2,14 @@
 title: "Avian Light Environment Code"
 output: html_document
 ---
+##Introduction
+Understanding the ecology and environmental interactions of bird species allows researchers to implement proper conservation plans and predict behavioral and population responses to changes in habitat structure and composition over time (Fischer and Lindenmayer, 2007). Sunlight is an important environmental factor that dictates ecosystems. Although it has been studied heavily in its relationship with plants in relationship to habitat structure, there are knowledge gaps in how sunlight directly affects the ecology and behavior of bird species. 
+
+Advances in animal tracking technologies now allow researchers to collect spatial and temporal avian movement data to better understand . Light-level geolocators are commonly used geotrackers that are fitted onto songbirds to gather this information and are readily available to deploy on small birds (< 20g) unlike traditional GPS units (McKinnon and Love, 2018). Geolocators record light intensity in lumens (lm) from a light sensor situated on the back or rump of the bird throughout each day, typically at 5 to 10-minute intervals. This is accomplished by analyzing raw light data to generate predictive geographic areas based on daylength (latitude) and sunrise / twighlight (longitude). Geolocators on birds occupying open habitats result in tight, accurate data due to high-quality light readings, whereas birds in dense, shaded habitats may result in broader, less defined predictive regions. Data is stored in the unit memory, therefore tagged individuals must be recaptured in order to remove the geolocator and download the raw light data.
+Most, if not all, geolocator studies seek to determine breeding or nonbreeding locations of migratory species (CITE). This means that large quantities of light data have been collected for the sole purpose of geolocation, creating a binary set of data that only values two nodes of information each day: sunrise and sunset. These large datasets could instead offer in-depth interpretations of behavioral, seasonal, and ecological traits that are otherwise difficult to monitor. Shifts in light readings of low-light environment birds throughout a tracking period might indicate changes in activity and behavior due to utilizing different habitat strata, encountering canopy openings more frequently, or other possible reasons. A recent study found how light environments in Amazonian birds were correlated to foraging niche partitioning and eye diameter, demonstrating the usefulness and importance of examining light environments (Ausprey, Newell, and Robinson 2020). Although fine-scale analyses of raw light data can be overtly subjective, possible information that could be concluded include differences in habitat structure usage, reproductive timing, responsive strategies to seasonal and environmental influxes. 
 
 
-## Introduction
+##Methods
 
 Install the packages needed, mainly 'tidyr' for easy coding
 
@@ -16,20 +21,20 @@ library('ggplot2')
 Here we are going to import the raw light .csv data. INSERT FILE HERE
 
 ```{r}
-spName1 <- "Hylopezus macularius"
-rawData <- as.data.frame(read.csv("./Species_Data/HYMA_geo.csv", header=TRUE))
+spName1 <- "Sclerurus mexicanus"
+rawData <- as.data.frame(read.csv("./Species_Data/SCME_geo.csv", header=TRUE))
 
 #Insert date banded and date recaptured in "YYYY-MM-DD" format
-bandDate1 <- "2018-07-24"
-recapDate1 <- "2019-06-03"
+bandDate1 <- "2018-07-05"
+recapDate1 <- "2019-06-25"
 
 #Second species to compare
-spName2 <- "Myrmothera campanisona"
-rawData2 <- as.data.frame(read.csv("./Species_Data/MYCA_geo.csv", header = TRUE))
+spName2 <- "Sclerurus rufigularis"
+rawData2 <- as.data.frame(read.csv("./Species_Data/SCRU_geo.csv", header = TRUE))
 
 #Band dates of second species
-bandDate2 <- "2018-8-19"
-recapDate2 <- "2019-5-31"
+bandDate2 <- "2018-08-07"
+recapDate2 <- "2019-06-17"
 ```
 
 Now to format the data organization. Because date and time are compiled together, we want them to be separate columns. We also want to cut out the lag time before deployment, so you will have to input an exact banding time.
