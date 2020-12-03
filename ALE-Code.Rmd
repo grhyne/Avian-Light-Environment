@@ -9,7 +9,7 @@ date: "December, 2020"
 
 Advances in animal tracking technologies now allow researchers to collect spatial and temporal avian movement data to better understand . Light-level geolocators are commonly used geotrackers that are fitted onto songbirds to gather this information and are readily available to deploy on small birds (< 20g) unlike traditional GPS units (McKinnon and Love, 2018). Geolocators record light intensity in lumens (lm) from a light sensor situated on the back or rump of the bird throughout each day, typically at 5 to 10-minute intervals. This is accomplished by analyzing raw light data to generate predictive geographic areas based on daylength (latitude) and sunrise / twighlight (longitude). Geolocators on birds occupying open habitats result in tight, accurate data due to high-quality light readings, whereas birds in dense, shaded habitats may result in broader, less defined predictive regions. Data is stored in the unit memory, therefore tagged individuals must be recaptured in order to remove the geolocator and download the raw light data.
 
-Most, if not all, geolocator studies seek to determine breeding or nonbreeding locations of migratory species (CITE). This means that large quantities of light data have been collected for the sole purpose of geolocation, creating a binary set of data that only values two nodes of information each day: sunrise and sunset. These large datasets could instead offer in-depth interpretations of behavioral, seasonal, and ecological traits that are otherwise difficult to monitor. Shifts in light readings of low-light environment birds throughout a tracking period might indicate changes in activity and behavior due to utilizing different habitat strata, encountering canopy openings more frequently, or other possible reasons. A recent study found how light environments in Amazonian birds were correlated to foraging niche partitioning and eye diameter, demonstrating the usefulness and importance of examining light environments (Ausprey, Newell, and Robinson 2020). Although fine-scale analyses of raw light data can be overtly subjective, possible information that could be concluded include differences in habitat structure usage, reproductive timing, responsive strategies to seasonal and environmental influxes. 
+Most, if not all, geolocator studies seek to determine breeding or nonbreeding locations of migratory species (Kramer et al. 2018, Cohen et al. 2019, Hallworth et al. 2015, Stanley et al. 2015). This means that large quantities of light data have been collected for the sole purpose of geolocation, creating a binary set of data that only values two nodes of information each day: sunrise and sunset. These large datasets could instead offer in-depth interpretations of behavioral, seasonal, and ecological traits that are otherwise difficult to monitor. Shifts in light readings of low-light environment birds throughout a tracking period might indicate changes in activity and behavior due to utilizing different habitat strata, encountering canopy openings more frequently, or other possible reasons. A recent study found how light environments in Amazonian birds were correlated to foraging niche partitioning and eye diameter, demonstrating the usefulness and importance of examining light environments (Ausprey, Newell, and Robinson 2020). Although fine-scale analyses of raw light data can be overtly subjective, possible information that could be concluded include differences in habitat structure usage, reproductive timing, responsive strategies to seasonal and environmental influxes. 
 
 ## Objectives
 
@@ -216,6 +216,23 @@ This data explored the light environments of only five individual birds, and the
 This research is a first step in understanding how to evaluate light data for bird species. This code could be beneficial for Neotropical migratory species, which is what most geolocator studies focus on. As researchers further understand important habitat characteristics of nonbreeding sites, one valuable indice could be light environments. I plan to implement this code for my masters research determining migratory connectivity in Swainson's Warblers (_Limnothlypis swainsonii_), in which we will evaluate differences in light environments between the breeding and nonbreeding seasons. This information can help fill knowledge gaps about overwintering habitat and supplument conservation efforts for species of concern.
 
 
+## References
+
+Ausprey, I. J., F. L. Newell, and S. K. Robinson. 2020. Adaptations to light predict the foraging niche and disassembly of avian communities in tropical countrysides. Ecology. 00(00):e03213. 10.1002/ecy.3213
+
+Cohen, E. B., C. R. Rushing, F. R. Moore, M. T. Hallworth, J. A. Hostetler, M. G. Ramirez, and P. P. Marra. 2019. The strength of migratory connectivity for birds en route to breeding through the Gulf of Mexico. Ecography 42:658-669.
+
+Fischer, J., and D. B. Lindenmayer. 2007. Landscape modification and habitat fragmentation: a synthesis. Global Ecology and Biogeography 16:265-280. 
+
+Hallworth, M. T., T. S. Sillett, S. L. Van Wilgenburg, K. A. Hobson, and P. P. Marra. 2015. Migratory connectivity of a Neotropical migratory songbird revealed by archival light-level geolocators. Ecological Applications 25:336-347
+
+Kramer, G. R., D. E. Andersen, D. A. Buehler, P. B. Wood, S. M. Peterson, J. A. Lehman, K. R. Aldinger, L. P. Bulluck, S. Harding, J. A. Jones, J. P. Loegering, C. Smalling, R. Vallender, and H. M. Streby. 2018. Population trends in Vermivora warblers are linked to strong migratory connectivity. Proceedings of the National Academy of Sciences of the United States of America 115:E3192-E3200.
+
+Laurance, W. F., T. E. Lovejoy, H. L. Vasconcelos, E. M. Bruna, R. K. Didham, P. C. Stouffer, C. Gascon, R. O. Bierregaard, S. G. Laurance, and E. Sampaio. 2002. Ecosystem decay of Amazonian forest fragments: A 22-year investigation. Conservation Biology 16:605-618.
+
+McKinnon, E. A., and O. P. Love. 2018. Ten years tracking the migrations of small landbirds: Lessons learned in the golden age of bio-logging. Auk 135:834-856.
+
+Stanley, C. Q., E. A. McKinnon, K. C. Fraser, M. P. Macpherson, G. Casbourn, L. Friesen, P. P. Marra, C. E. Studds, T. B. Ryder, N. E. Diggs, and B. J. M. Stutchbury. 2015. Connectivity of wood thrush breeding, wintering, and migration sites based on range-wide tracking. Conservation Biology 29:164-174.
 
 
 

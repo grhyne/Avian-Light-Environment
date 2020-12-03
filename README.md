@@ -4,6 +4,8 @@ Travis CI Bagde: [![Build Status](https://travis-ci.com/grhyne/Avian-Light-Envir
 
 This is a repository dedicated to better understanding the ecology of secretive ground-dwelling birds of the Amazon forests, specifically relating to niche partitioning in different light environments. Although a simple tool, the code written in R (ALE-Code.Rmd) provides base functions for extracting, manipulating, and visualizing raw light data from light-level geolocators, with the hopes of using this code for future analyses of Neotropical migratory species. 
 
+This was the result of my final project for Reproducible Research in R (BIOL 4800) at Louisiana State University.
+
 ## Instructions
 Running this code involves comparing two species. To do so, follow these instructions. 
 1. Open the **Data** folder in the repository, where each individual geolocator data will be stored as a .csv file with an accompanying BIRD_Description.txt file, labeled by their 4-letter species identification code. Select two species to compare, and open both of their Description.txt file. This will provide the information needed to insert into the code.
@@ -20,7 +22,9 @@ recapDate1 <- "**2019-06-25**"
 
 ```
 3. Create a PDF
-In order to render our R markdown code (ALE-Code.Rmd) to a readable format (PDF), we will utilize the makefile. To do this, simply enter "make Manuscript" into the command line, and the new pdf will be found in the **Final_Manuscript** folder.
+In order to render our R markdown code (ALE-Code.Rmd) to a readable format (PDF), we will utilize the makefile. To do this, simply enter "make Manuscript" into bash command line, and the new pdf will be found in the **Final_Manuscript** folder.
+
+4. Repeat with any two species to compare
 
 ## Environment
 The R code in this repository was written in the following environment:
