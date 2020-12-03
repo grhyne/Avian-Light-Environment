@@ -67,9 +67,7 @@ library('dplyr')
 install.packages('ggplot2')
 library('ggplot2')
 
-install.packages(tinytex)
-library(tinytex)
-tinytex::install_tinytex()
+
 ```
 
 
