@@ -9,5 +9,4 @@ knitr::knit('ALE-Code.Rmd', tangle=TRUE)
 source('ALE-Code.R')
 testthat::test_file('tests/testthat/test-1.R')
 testthat::test_file('tests/testthat/test-2.R')
-
-rmarkdown::render('..ALE-Code.Rmd', output_format ='pdf_document', output_dir = '../Final_Manuscript', output_file = 'Final_Manuscript')
+system('-rm ALE-Code.R')

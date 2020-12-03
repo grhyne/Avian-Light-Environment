@@ -24,6 +24,9 @@ In order to render our R markdown code (ALE-Code.Rmd) to a readable format (PDF)
 
 ## Environment
 The R code in this repository was written in the following environment:
+
 R version 3.6.3 (2020-02-29)
+
 Platform: x86_64-pc-linux-gnu (64-bit)
+
 Running under: Ubuntu 20.04.1 LTS
