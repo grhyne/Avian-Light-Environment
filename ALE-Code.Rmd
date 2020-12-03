@@ -5,25 +5,25 @@ output: pdf_document
 date: "December, 2020"
 ---
 ## Introduction
-Understanding the ecology and environmental interactions of bird species allows researchers to implement proper conservation plans and predict behavioral and population responses to changes in habitat structure and composition over time (Fischer and Lindenmayer, 2007). Avian biodiversity hotspots like the central Amazon rainforest are threatened from habitat fragmentation (Laurence et al. 2002), but recent evidence shows how bird populations in interior Amazon forests separated from disturbances are still experiencing declines, most notably ground-dwelling insectivores (Stouffer et al. 2020). These secretive species rely on moist, dense understory structure for foraging and nesting strategies, making them vulnerable to slight shifts in moisture, temperature. Sunlight is an important environmental factor that dictates moisture and temperature, and possibly behavioral traits. Although sunlight has been studied heavily in its relationship with plants in relationship to habitat structure, there are knowledge gaps in how sunlight directly affects the ecology and behavior of bird species. 
+  Understanding the ecology and environmental interactions of bird species allows researchers to implement proper conservation plans and predict behavioral and population responses to changes in habitat structure and composition over time (Fischer and Lindenmayer, 2007). Avian biodiversity hotspots like the central Amazon rainforest are threatened from habitat fragmentation (Laurence et al. 2002), but recent evidence shows how bird populations in interior Amazon forests separated from disturbances are still experiencing declines, most notably ground-dwelling insectivores (Stouffer et al. 2020). These secretive species rely on moist, dense understory structure for foraging and nesting strategies, making them vulnerable to slight shifts in moisture, temperature. Sunlight is an important environmental factor that dictates moisture and temperature, and possibly behavioral traits. Although sunlight has been studied heavily in its relationship with plants in relationship to habitat structure, there are knowledge gaps in how sunlight directly affects the ecology and behavior of bird species. 
 
 Advances in animal tracking technologies now allow researchers to collect spatial and temporal avian movement data to better understand . Light-level geolocators are commonly used geotrackers that are fitted onto songbirds to gather this information and are readily available to deploy on small birds (< 20g) unlike traditional GPS units (McKinnon and Love, 2018). Geolocators record light intensity in lumens (lm) from a light sensor situated on the back or rump of the bird throughout each day, typically at 5 to 10-minute intervals. This is accomplished by analyzing raw light data to generate predictive geographic areas based on daylength (latitude) and sunrise / twighlight (longitude). Geolocators on birds occupying open habitats result in tight, accurate data due to high-quality light readings, whereas birds in dense, shaded habitats may result in broader, less defined predictive regions. Data is stored in the unit memory, therefore tagged individuals must be recaptured in order to remove the geolocator and download the raw light data.
 
 Most, if not all, geolocator studies seek to determine breeding or nonbreeding locations of migratory species (CITE). This means that large quantities of light data have been collected for the sole purpose of geolocation, creating a binary set of data that only values two nodes of information each day: sunrise and sunset. These large datasets could instead offer in-depth interpretations of behavioral, seasonal, and ecological traits that are otherwise difficult to monitor. Shifts in light readings of low-light environment birds throughout a tracking period might indicate changes in activity and behavior due to utilizing different habitat strata, encountering canopy openings more frequently, or other possible reasons. A recent study found how light environments in Amazonian birds were correlated to foraging niche partitioning and eye diameter, demonstrating the usefulness and importance of examining light environments (Ausprey, Newell, and Robinson 2020). Although fine-scale analyses of raw light data can be overtly subjective, possible information that could be concluded include differences in habitat structure usage, reproductive timing, responsive strategies to seasonal and environmental influxes. 
 
-##Objectives
+## Objectives
 
 For this project, I plan to (1) visualize the light environments of five Amazonian ground-dwelling species, (2) compare the differences between individuals, and (3) make a reproducible code that will be utilized to analyze neotropical migrant geolocator data.
 
 
-##Methods
+## Methods
 
 Geolocator data was provided as a part of broader research that evaluated harnessing methods for different geotracking devices (Jirinec et al.2020). Male secretive ground-dwelling birds of different species were captured in primary forest at the Biological Dynamics of Forest Fragments Project in central Amazonia, Brazil, and deployed with geolocators. Throughout 2017 through 2019, birds were recaptured to extract geolocator units.
 
 For this study, I used tag data from five individuals representing five different species: Spotted Antpitta (_Hylopezus macularius_), Thrush-like Antpitta (_Myrmothera campanisona_), Ferruginous-backed Antbird (_Myrmecia ferrugina_), Tawny-thraoted Leaftosser (_Sclerurus mexicanus_), Short-billed Leaftosser (_Sclerurus rufigularis_). Data was organized, visualized, and compared between species by the following code, as followed and instructed by the READ_ME file in the corresponding Github repository.
 
 
-##Code
+## Code
 
 ```{r setup, include=FALSE}
 
@@ -32,7 +32,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-###Inputting species information, installing packages
+### Inputting species information, installing packages
 
 Here we insert our species information of the two species we want to visualize and compare. Based on the 'CODE_Description' file, insert the species full name, the appropriate .csv file, and banding / recapturing dates in YYYY-MM-DD format.
 
@@ -196,22 +196,22 @@ signif(pVal)
 
 ```
 
-##Results
+## Results
 
 Four species showed similar and insignificantly different light environments: Spotted Antpitta, Thrush-Like Antipitta, Ferruginous-backed Antbird, and Tawny-Throated Leaftosser. The Short-billed Leaftosser had significantly higher light values than all other species (P < 0.05).
 
 Certain seasonal trends were found in all individuals. Each individual plot showed decreases in light throughout November through February, followed by sharp increases in the following month or two. Monthly averages in chronological order showed contrasting values between the banding month and the subsequent recapture month around a year later.
 
-##Discussion
+## Discussion
 
 The ability to visualize light environments of bird species throughout the year is valuable in better understanding its ecology, seasonality, and behavior. We found that, even though they are highly associated ground-dwelling species, the Short-billed Leaftosser occupies a slightly different light niche, likely from taking advantage of different habitat strata than the other individuals. These results also show us that the two Antpitta species, which occupied the darkest environments, are likely the most sensitive to habitat changes.
 Insights into other behavioral and seasonal trends were apparent by visually analyzing each plot. The decrease between November through February is likely due to the wet season, which results in increased cloud cover and reduced sunlight. However, the sharp increase spikes found in all species right after the wet-season decrease may indicate heightened activity and movement, therefore hitting more pockets of open-canopy and resulting in higher light readings. This uptick in activity could be caused by the breeding season. Because these were all males tracked, activities like territory defense, courtship displays, and increased foraging for females and nestlings are probable explanations for increased light values. This is valuable phenological information that, with further replication, can give detailed breeding timing for local populations.
 
-###Downfalls of Geolocator Data
+### Downfalls of Geolocator Data
 
 This data explored the light environments of only five individual birds, and therefore we cannot draw any concrete conclusions about each species as a whole, nor their local populations. However, these results uncovered several glaring problems with analyzing raw light data, primarily the decrease in light data quality over time. As shown in the boxplots of all individuals, which are in chronological order, there is an overall decrease in light levels even during May and June. This is a function of the geolocator battery life, which slowly dies throughout its deployment The result is lower light readings over time, thus influencing the quality of the data. Unfortunatley, battery integrity is directly linked to environmental conditions (temperature, moisture), and therefore geolocators do not die at equal rates. Because of this, there is likely variation of light readings after 8 to 10 months of deployment.
 
-##Implications for future research
+## Implications for future research
 
 This research is a first step in understanding how to evaluate light data for bird species. This code could be beneficial for Neotropical migratory species, which is what most geolocator studies focus on. As researchers further understand important habitat characteristics of nonbreeding sites, one valuable indice could be light environments. I plan to implement this code for my masters research determining migratory connectivity in Swainson's Warblers (_Limnothlypis swainsonii_), in which we will evaluate differences in light environments between the breeding and nonbreeding seasons. This information can help fill knowledge gaps about overwintering habitat and supplument conservation efforts for species of concern.
 
